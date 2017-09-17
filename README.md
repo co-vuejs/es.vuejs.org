@@ -21,7 +21,7 @@ Translation for this documentation project are currently maintained in separate 
 Spanish translation is maintained by CO-Vuejs.
 
 * Translation Repo — [/co-vuejs/es.vuejs.org](https://github.com/co-vuejs/es.vuejs.org)
-* Primary maintainers - [CamiloRincon](https://github.com/CamiloRincon), [adrianengine](https://github.com/adrianengine), [diegofelipemoreno](https://github.com/diegofelipemoreno)
+* Primary maintainers - [CamiloRincon](https://github.com/CamiloRincon), [adrianengine](https://github.com/adrianengine), [diegofelipemoreno](https://github.com/diegofelipemoreno), [yamitvillamil](https://github.com/yamitvillamil)
 
 
 ### French
