@@ -4,9 +4,9 @@ type: guide
 order: 801
 ---
 
-Esta es definitivamente la página más difícil en la guía para escribir, pero sentimos que es importante. Hay una probabilidad de que hayas tenido problemas que trataste de resolver y para ello utilizado otra biblioteca para resolverlos. Estás aquí porque quieres saber si Vue puede resolver tus problemas específicos de una mejor manera. Eso es lo que esperamos responderte.
+Esta es la página más difícil en la guía para escribir, pero sentimos que es importante. Existe la posibilidad de que hayas tenido problemas, los cuales trataste de resolver y para ello utilizaste otra biblioteca. Estás aquí porque quieres saber si Vue puede resolver tus problemas de una mejor manera. Eso es lo que esperamos responder.
 
-También nos esforzamos mucho para evitar prejuicios. Como el equipo principal, obviamente nos gusta Vue mucho. Hay algunos problemas que creemos que resuelve mejor que cualquier otra cosa. Si no lo creyeramos, no estaríamos trabajando en esto. Sin embargo, queremos ser justos y precisos. Cuando otras bibliotecas ofrecen ventajas significativas, como el vasto ecosistema de procesadores alternativos de React o el soporte de navegación de Knockout en IE6, también intentamos mencionarlas.
+Nos esforzamos mucho para evitar prejuicios. Siendo el equipo principal, obviamente nos gusta mucho Vue. Hay algunos problemas que creemos resuelve mejor que cualquier otra cosa. Si no lo creyeramos, no estaríamos trabajando en esto. Sin embargo, queremos ser justos y precisos. Cuando otras bibliotecas ofrecen ventajas significativas, como el vasto ecosistema de procesadores alternativos de React o el soporte de navegación de Knockout en IE6, intentamos también mencionarlas.
 
 ¡También nos gustaría **tu** ayuda para mantener este documento actualizado porque el mundo de JavaScript se mueve rápido! Si notas una inexactitud o algo que no esté correcto, por favor, háznoslo saber [abriendo un issue (en Inglés)](https://github.com/vuejs/vuejs.org/issues/new?title=Inaccuracy+in+comparisons+guide).
 
@@ -16,13 +16,13 @@ React y Vue comparten muchas similitudes. Ambos:
 
 - utilizan un DOM virtual
 - proporcionan componentes de vista reactivos y componibles
-- mantienen el enfoque en la biblioteca central, con preocupaciones como el enrutamiento y la gestión global del estado manejada por bibliotecas complementarias
+- mantienen el enfoque en el núcleo de la biblioteca, preocupandose por temas como el enrutamiento y la administración del estado global a través de bibliotecas complementarias
 
-Siendo tan similares en alcance, hemos puesto más tiempo en afinar esta comparación que cualquiera. Queremos garantizar no sólo la precisión técnica, sino también el equilibrio. Señalamos donde React supera Vue, por ejemplo en la riqueza de su ecosistema y la abundancia de sus renderizadores personalizados.
+Siendo muy similares en su alcance, hemos puesto más tiempo en afinar esta comparación que cualquiera. Queremos garantizar no sólo la precisión técnica, sino también el equilibrio. Señalamos donde React supera Vue, por ejemplo en la riqueza de su ecosistema y la abundancia de sus renderizadores personalizados.
 
-Con eso dicho, es inevitable que la comparación pareciera sesgada hacia Vue para algunos usuarios de React, pues muchos de los temas explorados son hasta cierto punto subjetivos. Reconocemos la existencia de diversos gustos técnicos, y esta comparación tiene como objetivo principal esbozar las razones por las que Vue podría ser un mejor ajuste si tus preferencias coinciden con las nuestras.
+Con eso dicho, es inevitable, para algunos usuarios de React, que la comparación pareciera sesgada hacia Vue, pues muchos de los temas explorados son hasta cierto punto subjetivos. Reconocemos la existencia de diversos gustos técnicos, y esta comparación tiene como objetivo principal esbozar las razones por las que Vue podría ser una mejor elección si tus preferencias coinciden con las nuestras.
 
-La comunidad de React [ha sido fundamental](https://github.com/vuejs/vuejs.org/issues/364) para ayudarnos a lograr este equilibrio, con un agradecimiento especial a Dan Abramov del equipo React. Él fue extremadamente generoso con su tiempo y experiencia para ayudarnos a refinar este documento hasta que [ambos estuvimos contentos](https://github.com/vuejs/vuejs.org/issues/364#issuecomment-244575740) con el resultado final.
+La comunidad de React [ha sido fundamental](https://github.com/vuejs/vuejs.org/issues/364) para ayudarnos a lograr este equilibrio, queremos agradecer especialmente a Dan Abramov del equipo de React. Él fue extremadamente generoso con su tiempo y experiencia para ayudarnos a refinar este documento hasta que [ambos estuvimos contentos](https://github.com/vuejs/vuejs.org/issues/364#issuecomment-244575740) con el resultado final.
 
 ### Desempeño
 
@@ -30,11 +30,11 @@ Tanto React como Vue ofrecen un desempeño comparable en los casos de uso más c
 
 #### Esfuerzos de optimización
 
-En React, cuando el estado de un componente cambia, activa la representación de todo el sub-árbol de componentes, comenzando en ese componente como root. Para evitar re-renders innecesarios de componentes secundarios, es necesario utilizar `PureComponent` o implementar `shouldComponentUpdate` siempre que se pueda. Es posible que también necesite utilizar estructuras de datos inmutables para hacer que sus cambios de estado sean más fáciles de optimizar. Sin embargo, en ciertos casos puede que no pueda confiar en tales optimizaciones porque `PureComponent/shouldComponentUpdate` asume que la salida de renderizado del subárbol completo es determinada por los accesorios del componente actual. Si ese no es el caso, entonces tales optimizaciones pueden conducir a un estado del DOM inconsistente.
+En React, cuando el estado de un componente cambia, activa la representación de todo el sub-árbol de componentes, comenzando en ese componente como root. Para evitar re-renders innecesarios de componentes secundarios, es necesario utilizar `PureComponent` o implementar `shouldComponentUpdate` siempre que se pueda. Es posible que también necesite utilizar estructuras de datos inmutables para hacer que sus cambios de estado sean más fáciles de optimizar. Sin embargo, en ciertos casos puede que no aw pueda confiar en tales optimizaciones porque `PureComponent/shouldComponentUpdate` asume que la salida del renderizado del subárbol completo es determinada por los accesorios del componente actual. Si ese no es el caso, entonces tales optimizaciones pueden conducir a un estado del DOM inconsistente.
 
-En Vue, las dependencias de un componente se rastrean automáticamente durante su procesamiento, por lo que el sistema sabe exactamente qué componentes realmente necesitan volver a renderizar cuando cambia el estado. Se puede decir que cada componente tiene `shouldComponentUpdate` implementado automáticamente, sin las limitaciones de componente anidadas.
+En Vue, las dependencias de un componente se rastrean automáticamente durante su procesamiento, por lo que el sistema sabe exactamente qué componentes  necesitan volver a ser renderizados cuando cambia el estado. Se puede decir que cada componente tiene `shouldComponentUpdate` implementado automáticamente, sin las limitaciones de componente anidadas.
 
-En general, esto elimina la necesidad de optimizaciones de desempeño de parte del desarrollador, y les permite centrarse más en la construcción de la aplicación en sí misma a medida que se escala.
+En general, esto elimina la necesidad de optimizaciones de desempeño de parte del desarrollador, y permite centrarse más en la construcción de la aplicación en sí misma a medida que se escala.
 
 ### HTML y CSS
 
@@ -52,7 +52,7 @@ Las funciones de renderizado con JSX tienen algunas ventajas:
 
 - El soporte de herramientas (por ejemplo, linting, comprobación de tipo, autocompletado del editor) para JSX es, en algunos aspectos, más avanzado que lo que actualmente está disponible para las plantillas de Vue.
 
-En Vue, también tenemos [funciones de render](render-function.html) que pueden ser [compatibles con JSX](render-function.html#JSX), porque a veces se necesita de ese poder. Sin embargo, como experiencia predeterminada ofrecemos plantillas como una alternativa más sencilla. Cualquier HTML válido es tambien una plantilla para Vue válida, lo cual tiene algunas ventajas:
+En Vue, también tenemos [funciones de render](render-function.html) que pueden ser [compatibles con JSX](render-function.html#JSX), porque a veces se necesita ese poder. Sin embargo, como experiencia predeterminada ofrecemos plantillas como una alternativa más sencilla. Cualquier HTML válido es también una plantilla para Vue válida, lo cual tiene algunas ventajas:
 
 - Para muchos desarrolladores que han estado trabajando con HTML, las plantillas simplemente se sienten naturales para leer y escribir. La preferencia en sí puede ser algo subjetiva, pero si hace que el desarrollador sea más productivo, entonces el beneficio es objetivo.
 
@@ -64,13 +64,13 @@ En Vue, también tenemos [funciones de render](render-function.html) que pueden 
 
 Algunos argumentan que necesitarías aprender un lenguaje específico de dominio (DSL por sus siglas en inglés) adicional para poder escribir plantillas - creemos que esta diferencia es superficial en el mejor de los casos. En primer lugar, JSX no significa que el usuario no necesita aprender nada más - es una sintaxis adicional sobre el JavaScript, por lo que es fácil para cualquiera familiarizado con JavaScript pueda aprenderlo, pero decir que es igual al JS es engañoso. Del mismo modo, una plantilla es simplemente sintaxis adicional sobre HTML simple y por lo tanto tiene un costo de aprendizaje muy bajo para aquellos que ya están familiarizados con HTML. Con el DSL también podemos ayudar al usuario a hacer más con menos código (por ejemplo, modificadores `v-on`). La misma tarea puede implicar mucho más código al usar funciones JSX o render.
 
-A un alto nivel, podemos dividir los componentes en dos categorías: presentacionales y lógicos. Recomendamos utilizar plantillas para componentes de presentación y funciones de renderizado / JSX para los componentes lógicos. El porcentaje de estos componentes depende del tipo de aplicación que estás construyendo, pero en general encontramos que los presentacionales son mucho más comunes.
+A un alto nivel, podemos dividir los componentes en dos categorías: presentacionales y lógicos. Recomendamos utilizar plantillas para componentes de presentación y funciones de renderizado/JSX para los componentes lógicos. El porcentaje de estos componentes depende del tipo de aplicación que estás construyendo, pero en general encontramos que los presentacionales son mucho más comunes.
 
 #### Componentes de CSS con alcance
 
-A menos que se extiendan los componentes a través de múltiples archivos (por ejemplo, con [Módulos CSS](https://github.com/gajus/react-css-modules)), el CSS en React se realiza a través de soluciones CSS dentro de JS (por ejemplo, [styled-components](https://github.com/styled-components/styled-components), [glamorous](https://github.com/paypal/glamorous) y [emotion](https://github.com/emotion-js/emotion)). Esto introduce un nuevo paradigma de estilo orientado a componentes que es diferente del proceso normal de creación de CSS. Además, aunque hay soporte para la extracción de CSS en una sola hoja de estilos durante el tiempo de construcción, todavía es común que se necesite incluir un tiempo de ejecución en el paquete para que el estilo funcione correctamente. Mientras obtienes acceso al dinamismo de JavaScript mientras construyes tus estilos, la desventaja es que aumenta el tamaño del paquete y el coste de ejecución.
+A menos que se extiendan los componentes a través de múltiples archivos (por ejemplo, con [Módulos CSS](https://github.com/gajus/react-css-modules)), el CSS en React se realiza a través de soluciones CSS dentro de JS (por ejemplo, [styled-components](https://github.com/styled-components/styled-components), [glamorous](https://github.com/paypal/glamorous) y [emotion](https://github.com/emotion-js/emotion)). Esto introduce un nuevo paradigma de estilo orientado a componentes que es diferente del proceso normal de creación de CSS. Además, aunque hay soporte para la extracción de CSS en una sola hoja de estilos durante el tiempo de construcción, todavía es común que se necesite incluir un tiempo de ejecución en el paquete para que el estilo funcione correctamente. Mientras obtienes acceso al dinamismo de JavaScript mientras construyes tus estilos, tienes la desventaja de aumentar el tamaño del paquete y el coste de ejecución.
 
-Si eres un fan del CSS dentro de JS, muchas de las populares bibliotecas CSS dentro de JS soportan Vue (por ejemplo, [styleled-components-vue](https://github.com/styled-components/vue-styled-components) y [vue-emotion](https://github.com/egoist/vue-emotion)). La principal diferencia entre React y Vue es que el método por defecto de estilo en Vue es a través de etiquetas más conocidas de `style` en [componentes de un solo archivo](single-file-components.html).
+Si eres un fan del CSS dentro de JS, muchas de las bibliotecas populares de CSS dentro de JS soportan Vue (por ejemplo, [styleled-components-vue](https://github.com/styled-components/vue-styled-components) y [vue-emotion](https://github.com/egoist/vue-emotion)). La principal diferencia entre React y Vue es que el método por defecto de estilo en Vue es a través de la etiqueta `style` en [componentes de un solo archivo](single-file-components.html).
 
 [Componentes de un solo archivo](single-file-components.html) te brinda acceso completo al CSS en el mismo archivo como al resto del código de tu componente.
 
@@ -85,21 +85,19 @@ Si eres un fan del CSS dentro de JS, muchas de las populares bibliotecas CSS den
 ```
 El atributo opcional `scoped` le da automáticamente este CSS a su componente añadiendo un atributo único (como` data-v-21e5b78`) a los elementos y compilando `.list-container: hover` a algo como` .list-container [ data-v-21e5b78]: hover`.
 
-Por último, el estilo en el componente en Vue de un solo archivo es muy flexible. A través de [vue-loader](https://github.com/vuejs/vue-loader), puedes utilizar cualquier preprocesador, posprocesador e incluso una profunda integración con [Modulos CSS](https://vue-loader.vuejs.org/en/features/css-modules.html) - todo dentro del elemento `<style>`.
-
-Lastly, the styling in Vue's single-file component's is very flexible. Through [vue-loader](https://github.com/vuejs/vue-loader), you can use any preprocessor, post-processor, and even deep integration with [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html) -- all within the `<style>` element.
+Por último, dar estilo a un componente de Vue en un solo archivo es muy flexible. A través de [vue-loader](https://github.com/vuejs/vue-loader), puedes utilizar cualquier preprocesador, posprocesador e incluso una profunda integración con [Modulos CSS](https://vue-loader.vuejs.org/en/features/css-modules.html) - todo dentro del elemento `<style>`.
 
 ### Escalamiento
 
 #### Escalando hacia arriba
 
-Para aplicaciones grandes, Vue y React ofrecen soluciones de enrutamiento robustas. La comunidad React también ha sido muy innovadora en términos de soluciones de gestión de estado (por ejemplo, Flux / Redux). Estos patrones de administración de estado e [incluso el propio Redux](https://github.com/egoist/revue) se pueden integrar fácilmente en las aplicaciones de Vue. De hecho, Vue ha tomado incluso este modelo un paso más allá con [Vuex](https://github.com/vuejs/vuex), una solución de gestión de estado inspirada en Elm que se integra profundamente en Vue, la cual creemos ofrece una experiencia de desarrollo superior.
+Para aplicaciones grandes, Vue y React ofrecen soluciones de enrutamiento robustas. La comunidad React también ha sido muy innovadora en términos de soluciones de gestión de estado (por ejemplo, Flux / Redux). Estos patrones de administración de estado e [incluso el propio Redux](https://github.com/egoist/revue) se pueden integrar fácilmente en las aplicaciones de Vue. De hecho, Vue ha tomado este modelo un paso más allá con [Vuex](https://github.com/vuejs/vuex), una solución de gestión de estado inspirada en Elm que se integra profundamente en Vue, la cual creemos ofrece una experiencia de desarrollo superior.
 
 Otra diferencia importante es que las bibliotecas complementarias de Vue para la administración de estados y enrutamientos (entre [otras preocupaciones](https://github.com/vuejs)) están oficialmente soportadas y se mantienen al día con la biblioteca principal. React en su lugar elige dejar estas preocupaciones a la comunidad, creando un ecosistema más fragmentado. Sin embargo, siendo más popular, el ecosistema de React es considerablemente más rico que el de Vue.
 
 Por último, Vue ofrece un [generador de proyecto CLI](https://github.com/vuejs/vue-cli) que hace que sea sencillo iniciar un nuevo proyecto utilizando su sistema de compilación, incluido [webpack](https://github.com/videjs-templates/webpack), [Browserify](https://github.com/vuejs-templates/browserify), o incluso [sin sistema de compilación](https://github.com/vuejs-templates/simple). React también está avanzando en esta área con [create-react-app](https://github.com/facebookincubator/create-react-app), pero actualmente tiene algunas limitaciones:
 
-- No permite ninguna configuración durante la generación del proyecto, mientras que las plantillas de proyecto de Vue permiten lo permiten al estilo de [Yeoman](http://yeoman.io/).
+- No permite ninguna configuración durante la generación del proyecto, mientras que las plantillas de proyecto de Vue lo permiten al estilo de [Yeoman](http://yeoman.io/).
 - Sólo ofrece una plantilla única, asumiendo que estás construyendo una aplicación de una sola página, mientras que Vue ofrece una amplia variedad de plantillas para diversos propósitos y sistemas de compilación.
 - No puede generar proyectos a partir de plantillas construidas por el usuario, lo que puede ser especialmente útil para entornos empresariales con convenciones preestablecidas.
 
@@ -133,7 +131,7 @@ MobX se ha vuelto muy popular en la comunidad de React ya que utiliza un sistema
 
 ## AngularJS (Angular 1)
 
-Parte de la sintaxis de Vue se ve muy similar a la de AngularJS (por ejemplo `v-if` vs` ng-if`). Esto es porque había un montón de cosas que AngularJS tiene bien definidas y estas fueron una inspiración para Vue muy temprano en su desarrollo. Sin embargo, también hay muchos dolores que vienen con AngularJS, donde Vue ha intentado ofrecer una mejora significativa.
+Parte de la sintaxis de Vue se ve muy similar a la de AngularJS (por ejemplo `v-if` vs ` ng-if`). Esto es porque había un montón de cosas que AngularJS tiene bien definidas y estas fueron una inspiración para Vue muy temprano en su desarrollo. Sin embargo, también hay muchos dolores que vienen con AngularJS, donde Vue ha intentado ofrecer una mejora significativa.
 
 ### Complejidad
 
